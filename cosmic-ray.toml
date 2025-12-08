@@ -1,0 +1,11 @@
+[cosmic-ray]
+module-path = "src/calculator"
+timeout = 10.0
+excluded-modules = []
+test-command = "pytest -x tests"
+
+[cosmic-ray.distributor]
+name = "local"
+
+[cosmic-ray.execution-engine]
+name = "local"

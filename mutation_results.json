@@ -1,0 +1,11 @@
+{
+  "total": 94,
+  "killed": 0,
+  "survived": 0,
+  "timeout": 0,
+  "error": 0,
+  "kill_rate": 0.0,
+  "status_breakdown": {
+    "unknown": 94
+  }
+}
