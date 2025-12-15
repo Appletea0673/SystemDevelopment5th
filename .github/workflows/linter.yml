@@ -1,28 +1,25 @@
-name: Review by Linter
-
-on:
-  push:
-    branches: [ main, master, develop ]
-  pull_request:
-    branches: [ main, master, develop ]
-
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: ["3.8", "3.9", "3.10", "3.11"]
-    steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v4
-      with:
-        python-version: ${{ matrix.python-version }}
+  lint-and-format:
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install ruff
-    - name: Run tests
-      run: |
-        ruff format --check
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.9" # Version used in class
+
+      - name: Install Ruff
+        run: pip install ruff==0.4.4
+
+      - name: Run linter check
+        run: ruff check --fix .
+
+      - name: Run formatter check
+        run: ruff format .
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "style: auto-fix linting and formatting issues"
