@@ -5,7 +5,9 @@ on:
 
 jobs:
   lint-and-format:
-
+    runs-on: ubuntu-latest
+    permission:
+      contents: read
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
