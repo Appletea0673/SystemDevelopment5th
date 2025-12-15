@@ -8,6 +8,7 @@ MIN_VALUE = -1000000
 
 class InvalidInputException(Exception):
     """Exception raised when input values are outside the valid range."""
+
     pass
 
 
@@ -25,9 +26,13 @@ class Calculator:
             InvalidInputException: If any input is outside the valid range
         """
         if a < MIN_VALUE or a > MAX_VALUE:
-            raise InvalidInputException(f"Input value {a} is outside the valid range [{MIN_VALUE}, {MAX_VALUE}]")
+            raise InvalidInputException(
+                f"Input value {a} is outside the valid range [{MIN_VALUE}, {MAX_VALUE}]"
+            )
         if b is not None and (b < MIN_VALUE or b > MAX_VALUE):
-            raise InvalidInputException(f"Input value {b} is outside the valid range [{MIN_VALUE}, {MAX_VALUE}]")
+            raise InvalidInputException(
+                f"Input value {b} is outside the valid range [{MIN_VALUE}, {MAX_VALUE}]"
+            )
 
     def add(self, a, b):
         """Add two numbers.
@@ -94,8 +99,3 @@ class Calculator:
         if b == 0:
             raise InvalidInputException("Cannot divide by zero")
         return a / b
-
-
-
-
-

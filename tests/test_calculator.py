@@ -3,7 +3,13 @@ Test suite for the Calculator class.
 """
 
 import pytest
-from calculator.calculator import Calculator, InvalidInputException, MAX_VALUE, MIN_VALUE
+from calculator.calculator import (
+    Calculator,
+    InvalidInputException,
+    MAX_VALUE,
+    MIN_VALUE,
+)
+
 
 class TestAddition:
     """Tests for the add method."""
@@ -108,6 +114,7 @@ class TestAddition:
         calc = Calculator()
         assert calc.add(calc.add(2, 3), 4) == calc.add(2, calc.add(3, 4))
 
+
 class TestSubtraction:
     """Tests for the subtract method."""
 
@@ -193,6 +200,7 @@ class TestSubtraction:
         b = 3
         result = calc.add(calc.subtract(a, b), b)
         assert result == pytest.approx(a)
+
 
 class TestMultiplication:
     """Tests for the multiply method."""
@@ -283,6 +291,7 @@ class TestMultiplication:
         """Test that multiplication is commutative (a * b == b * a)."""
         calc = Calculator()
         assert calc.multiply(7, 3) == calc.multiply(3, 7)
+
 
 class TestDivision:
     """Tests for the divide method."""
@@ -386,7 +395,3 @@ class TestDivision:
         calc = Calculator()
         with pytest.raises(InvalidInputException):
             calc.divide(10, MAX_VALUE + 1)
-
-
-
-
